@@ -1,0 +1,69 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f4f4f4;
+  }
+  
+  button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .league-row {
+    background-color: #f0f8ff; /* Light blue */
+    font-weight: bold; /* Bold text */
+    padding: 10px; /* Extra padding */
+  }
+  
+  /* Default Falcon cell styling */
+/* Default Falcon cell styling */
+.falcon-cell {
+    background-color: rgba(144, 238, 144, 0.3); /* Light green milky background */
+  }
+  
+  /* Falcon cell while being edited */
+  .falcon-editing {
+    background-color: rgba(255, 99, 71, 0.3); /* Red background when editing */
+    border: 1px solid red; /* Red border for editing */
+  }
+  
+  /* Style for Falcon cell when its value has been changed */
+  .falcon-changed {
+    background-color: rgba(255, 0, 0, 0.3); /* Light red background after value change */
+    border: 1px solid red; /* Red border after value change */
+  }
+  
+  /* Style for the input field while editing */
+  .falcon-editing input {
+    padding: 0px; /* Padding for better spacing */
+    font-size: 16px; /* Font size */
+  }
+  
+  /* Optional: Style for other table cells */
+  td {
+    /* padding: 10px; */
+    text-align: center;
+  }
+  
+  /* Optional: Add hover effect to the table rows */
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+  
