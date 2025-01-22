@@ -1,0 +1,24 @@
+.app-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .top-logo {
+    background-color: #ffffff;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .top-logo img {
+    width: 100px;
+  }
+  
+  .main-layout {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  main {
+    display: flex;
+  }
+  

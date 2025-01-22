@@ -1,0 +1,55 @@
+/* Style for the sidebar container */
+.sidebar {
+    width: 250px;
+    background-color: #f4f4f4; /* Sidebar background color */
+    overflow-y: auto;
+}
+
+/* Style for the header */
+.sidebar h2 {
+    background-color: rgb(126, 190, 225);
+    margin: 0;
+    text-align: left; /* Align header text to the left */
+    padding: 10px; /* Optional: Add padding to the header */
+    font-size: 17px; /* Increase font size of the header */
+}
+
+/* Container for each league */
+.league-container {
+    margin-bottom: 0; /* Remove bottom margin */
+    border-bottom: 1px solid #ddd; /* Optional: For visual separation */
+}
+
+/* League title */
+.league-container h3 {
+    background-color: rgb(151, 190, 211);
+    margin: 0;
+    padding: 10px; /* Increase padding around the sidebar */
+    font-size: 15px; /* Increase font size of league title */
+    text-align: left; /* Align league title text to the left */
+}
+
+/* List of matches */
+ul {
+    list-style-type: none; /* Remove bullet points */
+    margin: 0;
+    padding: 0;
+}
+
+/* Style for each match */
+ul li {
+    background-color: rgb(139, 181, 203);
+    font-size: 16px; /* Increase font size for match details */
+    border-radius: 4px; /* Optional: Add rounded corners */
+    display: flex;
+    justify-content: space-between; /* Align home and away teams on opposite sides */
+    padding: 8px; /* Add padding to each match item */
+}
+
+/* Match text styling */
+ul li span {
+    display: block;
+    text-align: left; /* Align text to the left for match text */
+    font-size: 16px; /* Increase font size for match text */
+    flex: 1; /* Allow the span to expand to fill space */
+}
