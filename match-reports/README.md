@@ -1,59 +1,49 @@
-# MatchReports
+# MatchReports User Guide
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.3.
+## Overview
 
-## Development server
+The MatchReports application allows users to view, edit, and manage match data. It includes functionality for editing match odds (Radar, Falcon), Sin Risk, and Sin Limit for different match options and leagues.
 
-To start a local development server, run:
+## Main Features
 
-```bash
-ng serve
-```
+### Viewing Match Data
+- The app displays match data in a table format, with columns for `Option`, `Radar`, `Falcon`, `Sin Risk`, and `Sin Limit`.
+- For some rows, leagues are shown (e.g., 1X2, Under/Over), while others display match options (e.g., Home, Away).
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### Editing Match Data
+- **Radar**: The `Radar` column is displayed as a read-only value.
+- **Falcon**: The `Falcon` column is editable. Right-click (or long press on mobile) to enter edit mode. After editing, press `Enter` to save the changes.
+- **Sin Risk**: This column shows the `Sin Risk` associated with each match option. It’s read-only.
+- **Sin Limit**: The `Sin Limit` column allows you to edit the limit for a match. The value is capped to 100,000. Changes can be made in the input field when the cell is clicked or right-clicked.
 
-## Code scaffolding
+### Dynamic Updates
+- As you edit the `Falcon` and `Sin Limit` columns, the row will highlight to indicate changes. Once saved, the row will reflect the new value, and the color will adjust accordingly.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Editing Data
 
-```bash
-ng generate component component-name
-```
+### To Edit Falcon Values
+- Right-click (or tap and hold on mobile) on the Falcon cell for the match you want to edit. An input field will appear, allowing you to modify the value.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### To Edit Sin Limit Values
+- Click (or tap on mobile) on the Sin Limit cell, which will trigger an editable input field for you to modify the value.
 
-```bash
-ng generate --help
-```
+## Saving Changes
+- Once you've made your changes in the input fields, pressing `Enter` will save the value and exit edit mode. The changes are applied to the data and will be highlighted in the table.
 
-## Building
+## Color Indicators
+- The **Sin Limit** column will be dynamically colored based on the value you input, with a gradient from red to green as the limit increases.
 
-To build the project run:
+## Additional Features
 
-```bash
-ng build
-```
+### Match Details Toggle
+- Click on any match row to toggle additional details for that match. If a row is already open, clicking again will close it.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+## Known Issues
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+- Currently, the application does not support multi-cell editing or bulk updates.
+- Some older browsers may not fully support dynamic styling features (like gradients).
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Feedback
+If you encounter any issues or have suggestions for improvements, please feel free to submit them as an issue in the repository.

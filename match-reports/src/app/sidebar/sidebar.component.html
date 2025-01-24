@@ -1,16 +1,21 @@
 <div class="sidebar">
-    <h2>Soccer</h2>
+  <h2 style="margin-left: 10px;">Soccer</h2>
+  
+  <!-- List of Leagues -->
+  <div *ngFor="let league of leagues" class="league-container">
     
-    <!-- List of Leagues -->
-    <div *ngFor="let league of leagues" class="league-container">
-      <h3>{{ league.country }} - {{ league.league }}</h3>
-      
-      <!-- List of Matches -->
+    <!-- League Dropdown Toggle -->
+    <button class="dropdown-btn" (click)="toggleDropdown(league)">
+      {{ league.country }} - {{ league.league }}
+    </button>
+    
+    <!-- Matches Dropdown (Initially Hidden) -->
+    <div *ngIf="league.showMatches" class="dropdown-content">
       <ul>
-        <li *ngFor="let match of league.matches" [ngStyle]="getMatchStyle(match)">
-          <span>{{ match.home }} vs {{ match.away }}</span>
+        <li *ngFor="let match of league.matches" [routerLink]="['/match-details']">
+          <span style="cursor: pointer;">{{ match.home }} vs {{ match.away }}</span>
         </li>
       </ul>
     </div>
   </div>
-  
+</div>
