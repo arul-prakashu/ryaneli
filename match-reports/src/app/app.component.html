@@ -1,16 +1,26 @@
 <div class="app-container">
-  <!-- Top Logo -->
-  <div class="top-logo">
-    <!-- <img src="assets/logo.png" alt="Logo" /> -->
-  </div>
+  <!-- Header Section -->
+  <header class="header">
+    <!-- You can add your logo, navigation, or any other content here -->
+    <div class="header-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
+        <rect x="5" y="5" width="6" height="30" fill="#2B3589" />
+        <rect x="5" y="5" width="20" height="6" fill="#2B3589" />
+      </svg>
+    </div>
+  </header>
 
   <!-- Main Layout -->
-  <div class="main-layout">
+  <div class="main-layout" style="height: 100vh;">
+    
     <!-- Sidebar Component -->
     <app-sidebar></app-sidebar>
 
-    <!-- Content Component -->
-    <app-content>
-    </app-content>
+    <!-- Content Area -->
+    <div class="content-container">
+      <!-- Routed content will appear here -->
+      <app-content></app-content> <!-- Example of content section -->
+    </div>
+
   </div>
 </div>

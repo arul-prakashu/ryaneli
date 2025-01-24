@@ -1,69 +1,97 @@
+/* Table styling */
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-  }
-  
-  th, td {
-    padding: 10px;
-    text-align: left;
-    border: 1px solid #ddd;
-  }
-  
-  th {
-    background-color: #f4f4f4;
-  }
-  
-  button {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  .league-row {
-    background-color: #f0f8ff; /* Light blue */
-    font-weight: bold; /* Bold text */
-    padding: 10px; /* Extra padding */
-  }
-  
-  /* Default Falcon cell styling */
-/* Default Falcon cell styling */
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: center;
+  border: 1px solid #ddd;
+  height: 30px;
+  width: 60px;
+}
+
+th {
+  background-color: #f4f4f472;
+}
+
+button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.league-row {
+  text-align: center;
+  background-color: #e0e0e06e; /* Light blue */
+  font-weight: bold; /* Bold text */
+}
+
+/* Falcon cell styling */
 .falcon-cell {
-    background-color: rgba(144, 238, 144, 0.3); /* Light green milky background */
-  }
-  
-  /* Falcon cell while being edited */
-  .falcon-editing {
-    background-color: rgba(255, 99, 71, 0.3); /* Red background when editing */
-    border: 1px solid red; /* Red border for editing */
-  }
-  
-  /* Style for Falcon cell when its value has been changed */
-  .falcon-changed {
-    background-color: rgba(255, 0, 0, 0.3); /* Light red background after value change */
-    border: 1px solid red; /* Red border after value change */
-  }
-  
-  /* Style for the input field while editing */
-  .falcon-editing input {
-    padding: 0px; /* Padding for better spacing */
-    font-size: 16px; /* Font size */
-  }
-  
-  /* Optional: Style for other table cells */
-  td {
-    /* padding: 10px; */
-    text-align: center;
-  }
-  
-  /* Optional: Add hover effect to the table rows */
-  tr:hover {
-    background-color: #f1f1f1;
-  }
-  
+  background-color: rgba(19, 241, 123, 0.815); /* Softer milky parrot green */
+}
+
+.falcon-editing {
+  background-color: rgb(249, 157, 37); /* Yellow color while editing */
+  border: 1px solid red; /* Red border for editing */
+}
+
+.falcon-changed {
+  background-color: rgb(251, 57, 57); /* Red color after changes */
+  border: 1px solid red; /* Red border after value change */
+}
+
+/* Style for the input field while editing */
+.falcon-editing input {
+  padding: 0px; /* Padding for better spacing */
+  font-size: 16px; /* Font size */
+}
+
+.edit-input {
+  width: 100%;
+  padding: 5px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: inherit; /* Inherit font size from parent cell */
+  color: inherit; /* Inherit text color from parent cell */
+}
+
+.box {
+  margin-top: 10px;
+  padding: 2px;
+  width: 40px;
+  font-weight: bold;
+  height: 20px; /* Increased height */
+  background-color: #03b02c; /* Parrot green */
+  border-radius: 5px; /* Rounded corners */
+  color: white; /* White text color */
+  font-size: 16px; /* Adjust text size if needed */
+  display: flex; /* Use flex to center content vertically */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  position: relative; /* Make the box a positioned element for the arrow */
+}
+
+.box::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+  border-top: 2px solid #03b02c; /* Same parrot green color */
+  bottom: -40px; /* Position the arrow below the box */
+}
+
+/* Optional: Add hover effect to the table rows */
+tr:hover {
+  background-color: #f1f1f1;
+}

@@ -1,82 +1,94 @@
 <table mat-table>
-    <thead>
-      <tr>
-        <th>Option</th>
-        <th>Radar</th>
-        <th>Falcon</th>
-        <th>Sin Limit</th>
-        <th>Sin Risk</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let match of matches; let i = index">
-        <!-- Display row if match has a league -->
-        <ng-container *ngIf="match.league">
-          <td class="league-row">{{ match.league }}</td>
-          <td class="league-row">{{ match.radar }}</td>
-          <td class="league-row">{{ match.falcon }}</td>
-          <td class="league-row">{{ match.sinLimit }}</td>
-          <td class="league-row">{{ match.sinRisk || match.range }}</td>
-        </ng-container>
-  
-        <!-- Regular row with options for editing -->
-        <ng-container *ngIf="match.option">
-          <td>{{ match.option }}</td>
+  <thead>
+    <tr>
+      <th>Option</th>
+      <th>Radar</th>
+      <th>Falcon</th>
+      <th>Sin Risk</th>
+      <th>Sin Bet</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let match of matches; let i = index">
+      
+      <!-- Display row if match has a league -->
+      <ng-container *ngIf="match.league">
+        <td class="league-row" style="width: 140px; text-align: left; padding-left: 10px;">
+          {{ match.league }}
+        </td>
+        <td class="league-row">{{ match.radar }}</td>
+        <td class="league-row">{{ match.falcon }}</td>
+        <td class="league-row">
+          <p class="box" style="margin: 0; display: inline-block; text-align: center;">O</p>
+        </td>
+        <td class="league-row">{{ match.sinRisk || match.range }}</td>
+      </ng-container>
+
+      <!-- Regular row with options for editing -->
+      <ng-container *ngIf="match.option">
+        <td style="width: 140px; text-align: left; padding-left: 10px;">
+          {{ match.option }}
+        </td>
+
+        <!-- Radar cell: Disabled style -->
+        <td [ngClass]="'disabled-cell'"
+            [ngStyle]="{ 'background-color': '#FDFD96', 'color': 'gray', 'pointer-events': 'none' }">
+          {{ match.radar }}
+        </td>
+
+        <!-- Falcon cell with dynamic styling for editing and changes -->
+        <td [ngClass]="{
+            'falcon-editing': isEditing === i,
+            'falcon-changed': match.falconChanged,
+            'falcon-cell': isEditing !== i
+          }" 
+          (contextmenu)="onRightClick($event, i)" (mouseup)="onMouseUp(i)">
           
-          <!-- Radar cell: Disabled style -->
-          <td 
-            [ngClass]="'disabled-cell'" 
-            [ngStyle]="{'background-color': '#ADD8E6', 'color': 'gray', 'pointer-events': 'none'}">
-            {{ match.radar }}
-          </td>
-  
-          <!-- Falcon cell with dynamic styling for editing and changes -->
-          <td 
-            [ngClass]="{
-              'falcon-editing': isEditing === i, 
-              'falcon-changed': match.falconChanged, 
-              'falcon-cell': isEditing !== i
-            }" 
-            (click)="toggleEdit(i)">
-            <ng-container *ngIf="isEditing !== i">{{ match.falcon }}</ng-container>
-            <ng-container *ngIf="isEditing === i">
-              <input 
-                [(ngModel)]="match.falcon" 
-                type="number" 
-                class="edit-input" 
-                (keydown.enter)="saveEdit(i, 'falcon')" 
-                (keydown.arrowdown)="moveFocus(i, 'down')" 
-                (keydown.arrowup)="moveFocus(i, 'up')" 
-                (keydown.arrowleft)="moveFocus(i, 'left')" 
-                (keydown.arrowright)="moveFocus(i, 'right')" />
-            </ng-container>
-          </td>
-  
-          <!-- Sin Limit cell with editing functionality -->
-          <td 
-            [ngClass]="{
-              'sinLimit-editing': isEditingSinLimit === i, 
-              'sinLimit-changed': match.sinLimitChanged
-            }" 
-            (click)="toggleEditSinLimit(i)">
-            <ng-container *ngIf="isEditingSinLimit !== i">{{ match.sinLimit }}</ng-container>
-            <ng-container *ngIf="isEditingSinLimit === i">
-              <input 
-                [(ngModel)]="match.sinLimit" 
-                type="text" 
-                class="edit-input" 
-                (keydown.enter)="saveEdit(i, 'sinLimit')" 
-                (keydown.arrowdown)="moveFocus(i, 'down')" 
-                (keydown.arrowup)="moveFocus(i, 'up')" 
-                (keydown.arrowleft)="moveFocus(i, 'left')" 
-                (keydown.arrowright)="moveFocus(i, 'right')" />
-            </ng-container>
-          </td>
-  
-          <!-- Sin Risk cell -->
-          <td>{{ match.sinRisk || match.range }}</td>
-        </ng-container>
-      </tr>
-    </tbody>
-  </table>
-  
+          <!-- Display content when not in edit mode -->
+          <ng-container *ngIf="isEditing !== i">
+            {{ match.falcon }}
+          </ng-container>
+
+          <!-- Input field when in edit mode -->
+          <ng-container *ngIf="isEditing === i">
+            <input [(ngModel)]="match.falcon" 
+                   type="text" 
+                   (input)="onInputChange($event)" 
+                   [maxlength]="6" 
+                   class="edit-input" 
+                   (keydown.enter)="saveEdit(i, 'falcon')">
+          </ng-container>
+        </td>
+
+        <!-- Sin Limit cell with editing functionality -->
+        <td [ngClass]="{
+            'sinLimit-editing': isEditingSinLimit === i, 
+            'sinLimit-changed': match.sinLimitChanged, 
+            'sinLimit-cell': isEditingSinLimit !== i,
+            'clicked': isCellClicked === i
+          }" 
+          (contextmenu)="onRightClickSinLimit($event, i)" 
+          (mouseup)="onMouseUpSinLimit(i)" 
+          (click)="onCellClick(i)">
+          
+          <!-- Always display the input field -->
+          <ng-container *ngIf="true">
+            <input [(ngModel)]="match.sinLimit" 
+                   (input)="onInputChange($event)"
+                   [ngClass]="{ 'clicked': isCellClicked === i }"
+                   type="text" 
+                   [maxlength]="6" 
+                   class="edit-input" 
+                   (keydown.enter)="saveEditSinLimit(match.sinLimit, i, 'sinLimit')" 
+                   (click)="onInputClick(i)" 
+                   [ngStyle]="{'background': getGradientColor(match.sinLimit)}"
+                   style="width: 100%; padding: 5px;" />
+          </ng-container>
+        </td>
+
+        <!-- Sin Risk cell -->
+        <td>{{ match.sinRisk || match.range }}</td>
+      </ng-container>
+    </tr>
+  </tbody>
+</table>

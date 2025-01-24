@@ -1,24 +1,56 @@
-.app-container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .top-logo {
-    background-color: #ffffff;
-    padding: 10px;
-    text-align: center;
-  }
-  
-  .top-logo img {
-    width: 100px;
-  }
-  
-  .main-layout {
-    display: flex;
-    flex-direction: row;
-  }
-  
-  main {
-    display: flex;
-  }
-  
+/* Transparent header with sleek modern design */
+.header {
+  background-color: rgb(255, 255, 255);  /* Semi-transparent background */
+  color: white;                           /* White text */
+  padding: 10px 20px;
+  align-items: center;
+  position: fixed;                        /* Fix the header to the top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 1px 5px rgba(195, 191, 191, 0.7); /* Subtle shadow for depth */
+  backdrop-filter: blur(10px);             /* Blur the background behind the header */
+  z-index: 1000;                          /* Ensure the header is on top */
+  transition: background-color 0.3s ease-in-out; /* Smooth transition effect */
+}
+
+/* Style for logo in the header */
+.header-logo h1 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Navigation menu styling */
+.header-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.header-nav li {
+  margin-left: 20px;
+}
+
+/* Add space between header and content */
+body {
+  padding-top: 20px; /* Adjust based on header height */
+  margin: 0;  /* Remove default margin */
+}
+
+/* Layout for the main content area */
+.main-layout {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  margin-top: 40px; /* Optional: additional space if needed */
+}
+
+.content-container {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+  margin-top: 20px; /* Optional: additional space if needed */
+}
